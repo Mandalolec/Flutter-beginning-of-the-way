@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_first/row_column.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'pizza_first',
       theme: ThemeData(primarySwatch: Colors.amber),
-      home: HomePage(),
+      home: MyRowColumn(),
     );
   }
 }
