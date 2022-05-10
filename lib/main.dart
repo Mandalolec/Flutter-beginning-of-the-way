@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'list.dart';
+import 'Home.dart';
+import 'Person.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,10 +11,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'pizza_first',
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: ContainerList(),
+    return ChangeNotifierProvider<PersonList>(
+      create: (context) => PersonList(),
+      child: MaterialApp(
+        title: 'pizza_first',
+        theme: ThemeData(primarySwatch: Colors.amber),
+        home: HomePage(),
+      ),
     );
   }
 }
