@@ -2,34 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
+import 'AddPage.dart';
 import 'MyListWidget.dart';
 import 'MyTextField.dart';
 import 'Person.dart';
 
-PersonList person = new PersonList();
+PersonList person = PersonList();
 
-class HomePage extends StatefulWidget {
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final widget =
-        ListPersonWrapper(pList: context.watch<PersonList>().getData);
-    Widget PersonL = widget;
+    List<Person> personList = context.watch<PersonList>().getData;
+
+    void openAddPersonPage() {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AddPersonPage(),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Avqvq"),
+        title: const Text("Список"),
       ),
-      body: PersonL,
+      body: Column(
+        children: [
+          Expanded(flex: 9, child: ListPersonWrapper(pList: personList)),
+          Expanded(
+              flex: 1,
+              child: Container(
+                child: ElevatedButton(
+                  child: Text("Добавить"),
+                  onPressed: openAddPersonPage,
+                ),
+              ))
+        ],
+      ),
     );
   }
-
-  //Expanded(
-  //flex: 1,
-  //child: ElevatedButton(
-  // onPressed: () => person.addPersonList,
-} //child: Text("Нажми"),
+}

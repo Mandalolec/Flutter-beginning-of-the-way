@@ -7,8 +7,8 @@ class MyTextFieldName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (newData) =>
-          context.read<PersonList>().addPersonListName(newData),
+      onChanged: (newName) =>
+          context.read<PersonList>().addPersonListName(newName),
     );
   }
 }
@@ -17,8 +17,8 @@ class MyTextFieldCompanies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (newData) =>
-          context.read<PersonList>().addPersonListCompanies(newData),
+      onChanged: (newCompanies) =>
+          context.read<PersonList>().addPersonListCompanies(newCompanies),
     );
   }
 }
