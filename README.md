@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+Project has two branches: master and test.
+End app in master brunch. Test brunch it test brunch
 ## Getting Started
 
 This project is a starting point for a Flutter application.
