@@ -15,7 +15,7 @@ class AddPizzaPage extends StatelessWidget {
     void openHomePage() {
       Provider.of<PizzaList>(context, listen: false)
           .addPizzaList(pizza.name, pizza.price);
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => const MarketPage(),
@@ -55,13 +55,16 @@ class AddPizzaPage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-                margin: const EdgeInsets.all(20),
-                child: Text("Add pizza",
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black))),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Text("Add pizza",
+                      style: GoogleFonts.sourceSansPro(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black))),
+            ),
           ],
         ),
       ),
@@ -92,15 +95,17 @@ class AddPizzaPage extends StatelessWidget {
                         flex: 3,
                         child: Column(children: const <Widget>[
                           MyTextFieldName(),
-                          MyTextFieldCompanies(),
+                          MyTextFieldPrice(),
                         ]),
                       ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 100, left: 20, right: 20, bottom: 100),
+                child: Align(
                   alignment: FractionalOffset.bottomCenter,
                   child: SizedBox(
                     width: 320,

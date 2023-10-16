@@ -4,10 +4,9 @@ import 'package:provider/provider.dart';
 
 import 'pizza.dart';
 
-// ignore: must_be_immutable
 class ListPizzaWrapper extends StatelessWidget {
-  List<Pizza> pList = [];
-  ListPizzaWrapper({Key? key, required this.pList}) : super(key: key);
+  final List<Pizza> pList;
+  const ListPizzaWrapper({Key? key, required this.pList}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

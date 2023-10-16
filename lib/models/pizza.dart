@@ -9,7 +9,7 @@ class Pizza {
 }
 
 class PizzaList with ChangeNotifier {
-  List<Pizza> pizzaList = <Pizza>[
+  final List<Pizza> _pizzaList = <Pizza>[
     Pizza("Original", "8"),
     Pizza("Buffalo", "10"),
     Pizza("San Marzano", "6"),
@@ -17,23 +17,23 @@ class PizzaList with ChangeNotifier {
     Pizza("Mexican", "13"),
   ];
 
-  List<Pizza> get getData => pizzaList;
+  List<Pizza> get getData => _pizzaList;
+
   String name = "";
   String price = "";
+
   void addPizzaListName(String newName) {
     name = newName;
-    notifyListeners();
   }
 
   void addPizzaListCompanies(String newPrice) {
     price = newPrice;
-    notifyListeners();
   }
 
   void addPizzaList(newName, newPrice) {
     newName = name;
     newPrice = price;
-    pizzaList.add(Pizza(name, price));
+    _pizzaList.add(Pizza(name, price));
     notifyListeners();
   }
 }

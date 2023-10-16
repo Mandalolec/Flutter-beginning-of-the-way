@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -45,8 +46,8 @@ class MyTextFieldName extends StatelessWidget {
   }
 }
 
-class MyTextFieldCompanies extends StatelessWidget {
-  const MyTextFieldCompanies({Key? key}) : super(key: key);
+class MyTextFieldPrice extends StatelessWidget {
+  const MyTextFieldPrice({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +66,8 @@ class MyTextFieldCompanies extends StatelessWidget {
           width: 170,
           child: TextField(
             controller: _controller,
+            keyboardType: const TextInputType.numberWithOptions(
+                decimal: true, signed: false),
             decoration: InputDecoration(
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(0)),
@@ -76,6 +79,18 @@ class MyTextFieldCompanies extends StatelessWidget {
                 )),
             onChanged: (newPrice) =>
                 context.read<PizzaList>().addPizzaListCompanies(newPrice),
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
+              TextInputFormatter.withFunction((oldValue, newValue) {
+                try {
+                  final text = newValue.text;
+                  if (text.isNotEmpty) double.parse(text);
+                  return newValue;
+                } catch (e) {
+                  return oldValue;
+                }
+              }),
+            ],
           ),
         ),
       ],

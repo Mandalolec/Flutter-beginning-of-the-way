@@ -13,10 +13,10 @@ class MarketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Pizza> pizzaList = context.watch<PizzaList>().getData;
+    final List<Pizza> pizzaList = context.watch<PizzaList>().getData;
 
     void openAddPizzaPage() {
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => const AddPizzaPage(),
@@ -30,40 +30,13 @@ class MarketPage extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 0,
         flexibleSpace: Image.asset(
-          'assets/image/pizza_logo.png',
+          'assets/image/pizza_logo.png  ',
           scale: 12,
           alignment: Alignment.bottomCenter,
         ),
-        title: Row(
-          children: [
-            Expanded(
-                flex: 5,
-                child: Text("Pizza Market",
-                    style: GoogleFonts.sourceSansPro(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ))),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  height: 35,
-                  margin: const EdgeInsets.all(10),
-                  child: FloatingActionButton(
-                    heroTag: "Market",
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    backgroundColor: Colors.red[400],
-                    child: const Icon(Icons.add_outlined, color: Colors.white),
-                    onPressed: openAddPizzaPage,
-                  ),
-                ))
-          ],
-        ),
       ),
-      body: Container(
-          margin: const EdgeInsets.all(24.0),
+      body: Padding(
+          padding: const EdgeInsets.all(24.0),
           child: ListPizzaWrapper(pList: pizzaList)),
     );
   }
